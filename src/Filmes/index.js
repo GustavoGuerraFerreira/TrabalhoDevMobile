@@ -1,4 +1,4 @@
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, Image, StyleSheet, Button } from "react-native";
 
 
 
@@ -13,9 +13,12 @@ export default function Filmes (props){
                 source = {props.image}/>
             </View>
             <View style={styles.informacoes}>
-                <Text style = {styles.fontTitle}>Título: {props.title}</Text>
-                <Text>SubTitulo: {props.subTitle}</Text>
+                <Text style = {styles.fontTitle}>{props.title}</Text>
+                <Text style = {styles.fontSubTitle}>{props.subTitle}</Text>
                 <Text>Sinopse: {props.resume}</Text>
+                <Button title="Comprar"  color="#841584">
+                Comprar
+                </Button>
             </View>
         </View>
     )
@@ -36,16 +39,25 @@ const styles = StyleSheet.create({
 
     },
     imagem : {
-      width: 100,
-      height: 100,
+      width: "100px",
+      height: "100px",
+      resizeMode: "poster"
     },
     fontTitle: {
         fontSize: 20,
         fontWeight: "bold",
+        textAlign: "center"
+        
+    },
+    fontSubTitle: {
+        fontSize: 15,
+        fontWeight: "bold",
+        textAlign: "center"
     },
     informacoes : {
         padding: "5px",
         width: '70%',
-    }
+    },
+
 
 });
