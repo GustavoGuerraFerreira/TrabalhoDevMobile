@@ -1,6 +1,5 @@
-import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ActivityIndicator } from 'react-native';
 import Filmes from './src/Filmes';
 
 
@@ -13,9 +12,7 @@ export default function App() {
     fetch(baseURL)
       .then(data => data.json())
       .then(objeto =>{
-        console.log(objeto)
         setFilmes(objeto.data)
-        console.log(objeto.data)
       })
   }, [])
   return (
@@ -28,7 +25,7 @@ export default function App() {
       image = {{uri:`https://api.otaviolube.com${filme.attributes.poster.data.attributes.url}`}}
       key={filme.id}
     />)
-      : <Text>Carregando</Text>}
+      : <ActivityIndicator size="large" color="orange" />}
     </View>
   );
 }
@@ -47,3 +44,4 @@ const styles = StyleSheet.create({
     color: "orange"
   }
 });
+
