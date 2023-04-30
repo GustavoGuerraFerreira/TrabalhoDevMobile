@@ -19,13 +19,8 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.texto}>Cartazes De Filmes:</Text>
       { filmes.length > 0 ? filmes.map(filme =>
-      <Filmes title= {filme.attributes.titulo}
-      subTitle = {filme.attributes.subtitulo}
-      resume = {filme.attributes.sinopse}
-      image = {{uri:`https://api.otaviolube.com${filme.attributes.poster.data.attributes.url}`}}
-      key={filme.id}
-    />)
-      : <ActivityIndicator size="large" color="orange" />}
+      <Filmes filme={filme.attributes} key = {filme.id}/> ): 
+      <ActivityIndicator size="large" color="orange" />}
     </View>
   );
 }
@@ -44,4 +39,3 @@ const styles = StyleSheet.create({
     color: "orange"
   }
 });
-
