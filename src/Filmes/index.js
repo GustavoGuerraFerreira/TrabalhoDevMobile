@@ -1,24 +1,22 @@
-import { View, Text, Image, StyleSheet, Button } from "react-native";
+import { View, Text, Image, StyleSheet, Button,TouchableOpacity } from "react-native";
+
+const baseURL = "https://api.otaviolube.com"
 
 
-
-
-
-
-export default function Filmes (props){
+export default function Filmes ({filme}){
     return(
         <View style = {styles.container}>
             <View style= {styles.containerImage}>
                 <Image style = {styles.imagem}
-                source = {props.image}/>
+                source ={{uri: baseURL + filme.poster.data.attributes.url}}/>
             </View>
             <View style={styles.informacoes}>
-                <Text style = {styles.fontTitle}>{props.title}</Text>
-                <Text style = {styles.fontSubTitle}>{props.subTitle}</Text>
-                <Text>Sinopse: {props.resume}</Text>
-                <Button title="Comprar"  color="#841584">
-                Comprar
-                </Button>
+                <Text style = {styles.fontTitle}>{filme.titulo}</Text>
+                <Text style = {styles.fontSubTitle}>{filme.subtitulo}</Text>
+                <Text>Sinopse: {filme.sinopse}</Text>
+                <TouchableOpacity style= {styles.btn}>
+                    <Text style = {styles.btnText}>Comprar</Text>
+                </TouchableOpacity>
             </View>
         </View>
     )
@@ -39,9 +37,10 @@ const styles = StyleSheet.create({
 
     },
     imagem : {
-      width: "100px",
-      height: "100px",
-      resizeMode: "poster"
+      marginTop: "15px",
+      width: "150px",
+      height: "200px",
+      resizeMode: "cover"
     },
     fontTitle: {
         fontSize: 20,
@@ -56,8 +55,22 @@ const styles = StyleSheet.create({
     },
     informacoes : {
         padding: "5px",
-        width: '70%',
+        width: '60%',
+        alignItems: 'center'
+        
     },
+    btn : {
+        height: 20,
+        width: '50%',
+        backgroundColor: 'black',
+        borderRadius: "5px"
+    },
+    btnText : {
+        fontSize: 15,
+        fontWeight: "bold",
+        textAlign: "center",
+        color: 'rgb(235, 128, 43)'
+    }
 
 
 });
